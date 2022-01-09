@@ -1,9 +1,19 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
+import { useEffect } from 'react';
+import type { InferGetStaticPropsType } from 'next';
 
-export default function Home() {
-  const message: string = 'Hello World!';
+export async function getStaticProps() {
+  const products = [1, 2, 3];
 
-  return <div>{message}</div>;
+  return {
+    props: {
+      products,
+    },
+    revalidate: 4 * 60 * 60,
+  };
+}
+
+export default function Home({
+  products,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  return <div>{products}</div>;
 }
