@@ -3,6 +3,7 @@ export interface ProductImage {
   alt?: string
 }
 
+r
 export interface Product {
   id: string
   name: string
